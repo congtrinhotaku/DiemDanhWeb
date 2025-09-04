@@ -1,0 +1,28 @@
+
+<h1>Chỉnh sửa nhân sự</h1>
+<div class="row">
+  <div class="col">
+    <form action="/employees/<%= employee._id %>/edit" method="POST">
+      <label>Mã NV: <input type="text" name="code" value="<%= employee.code %>" required></label><br>
+      <label>Họ tên: <input type="text" name="name" value="<%= employee.name %>" required></label><br>
+      <label>Email: <input type="email" name="email" value="<%= employee.email %>" required></label><br>
+      <label>Điện thoại: <input type="text" name="phone" value="<%= employee.phone %>"></label><br>
+      <label>Phòng ban: <input type="text" name="department" value="<%= employee.department %>"></label><br>
+      <label>Chức vụ: <input type="text" name="position" value="<%= employee.position %>"></label><br>
+      <label>Trạng thái:
+        <select name="status">
+          <option value="active" <%= employee.status==="active" ? "selected" : "" %>>Đang làm</option>
+          <option value="inactive" <%= employee.status==="inactive" ? "selected" : "" %>>Nghỉ</option>
+        </select>
+      </label><br>
+      <button type="submit">Cập nhật</button>
+    </form>
+  </div>
+  <div class="col">
+    <h3>Thêm khuôn mặt</h3>
+    <form action="/employees/<%= employee._id %>/add-face" method="POST" enctype="multipart/form-data">
+      <input type="file" name="faceImage" accept="image/*" required>
+      <button type="submit">Upload ảnh</button>
+    </form>
+  </div>
+</div>

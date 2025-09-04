@@ -1,0 +1,29 @@
+<h1>Danh sách nhân sự</h1>
+<a href="/employees/create">➕ Thêm nhân sự</a>
+<table border="1" cellpadding="8">
+  <tr>
+    <th>Mã NV</th>
+    <th>Họ tên</th>
+    <th>Email</th>
+    <th>Phòng ban</th>
+    <th>Chức vụ</th>
+    <th>Trạng thái</th>
+    <th>Hành động</th>
+  </tr>
+  <% employees.forEach(emp => { %>
+  <tr>
+    <td><%= emp.code %></td>
+    <td><%= emp.name %></td>
+    <td><%= emp.email %></td>
+    <td><%= emp.department %></td>
+    <td><%= emp.position %></td>
+    <td><%= emp.status %></td>
+    <td>
+      <a href="/employees/<%= emp._id %>/edit">✏️ Sửa</a>
+      <form action="/employees/<%= emp._id %>/delete" method="POST" style="display:inline;">
+        <button type="submit" onclick="return confirm('Xóa nhân sự này?')">🗑️ Xóa</button>
+      </form>
+    </td>
+  </tr>
+  <% }) %>
+</table>
